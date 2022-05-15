@@ -1,0 +1,32 @@
+<Center
+        alignSelf="center"
+        w="75%"
+        borderRadius={25}
+        h="15%"
+        bg="gray.300"
+        p="5%"
+      >
+        {/* code here drop down */}
+        <Menu>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            {bn}
+          </MenuButton>
+          <MenuList>
+            <MenuItem onClick={() => setBldgName("Main Building")}>
+              Main Building
+            </MenuItem>
+            <MenuItem>New Building</MenuItem>
+          </MenuList>
+        </Menu>
+        <Spacer />
+        <Stack spacing={4}>
+          <InputGroup>
+            <InputLeftAddon children="Room Number" />
+            <Input
+              onChange={(e) => setRoomNum(e.target.value)}
+              type="num"
+              placeholder="room number"
+            />
+          </InputGroup>
+        </Stack>
+      </Center>
