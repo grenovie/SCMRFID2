@@ -19,10 +19,8 @@ const Scanner = () => {
   const { register, handleSubmit, setFocus, resetField } = useForm();
 
   const [rfid, setRfid] = useState("");
-  const [bldgName, setBldgName] = useState();
-  const [roomNum, setRoomNum] = useState();
-  const [bldgName2, setBldgName2] = useState("");
-  const [init, setInit] = useState("");
+  const [time, setTime] = useState("");
+  const [timePresent, setTimePresent] = useState("");
   // const navigate = useNavigate();
   const toast = useToast();
   const [loading, setLoading] = useState(false);
@@ -31,18 +29,9 @@ const Scanner = () => {
     window.location.reload(false);
   }
   useEffect(() => {
-    const room = localStorage.getItem("roomNum");
-
-    if (room) {
-      setRoomNum(room);
-    }
-  }, []);
-  useEffect(() => {
-    const bName = localStorage.getItem("buildingName");
-
-    if (bName) {
-      setBldgName(bName);
-    }
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+    setTime(user.time);
+    setTimePresent(user.timePresent);
   }, []);
   const submitHandler = async () => {
     setLoading(true);
@@ -75,8 +64,8 @@ const Scanner = () => {
         "/api/tags/add",
         {
           rfid,
-          bldgName,
-          roomNum,
+          time,
+          timePresent,
         },
         config
       );

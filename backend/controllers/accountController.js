@@ -82,6 +82,8 @@ const authUser = asyncHandler(async (req, res) => {
       fullName: professor.fullName,
       section: professor.section,
       isStaff: professor.isStaff,
+      time: professor.time,
+      timePresent: professor.timePresent,
       token: generateToken(professor._id),
     });
   } else {

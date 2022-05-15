@@ -11,6 +11,8 @@ const professorSchema = mongoose.Schema(
     isStaff: { type: Boolean, default: false },
     lab: { type: String, require: true },
     rfid: { type: String },
+    time: { type: String },
+    timePresent: { type: String },
   },
   { timestamps: true }
 );

@@ -14,6 +14,8 @@ const studentSchema = mongoose.Schema(
     password: { type: String, require: true },
     present: { type: Number },
     status: { type: Boolean, default: false },
+    time: { type: String },
+    timePresent: { type: String },
     pic: {
       type: "String",
       required: true,

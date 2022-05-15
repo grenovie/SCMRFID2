@@ -2,11 +2,11 @@ const asyncHandler = require("express-async-handler");
 const Student = require("../models/studentModel");
 
 const addPresent = asyncHandler(async (req, res) => {
-  const { rfid } = req.body;
+  const { rfid, time, timePresent } = req.body;
   const user = await Student.findOne({ rfid });
   const added = await Student.findByIdAndUpdate(user._id, {
     $inc: { present: 1 },
-    $set: { status: true },
+    $set: { status: true, time: time, timePresent: timePresent },
   });
 
   if (!added) {
@@ -21,6 +21,7 @@ const addPresent = asyncHandler(async (req, res) => {
       section: user.section,
       pic: user.pic,
       studentId: user.studentId,
+      time: user.time,
     });
   }
 });
