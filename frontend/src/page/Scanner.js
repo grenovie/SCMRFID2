@@ -17,10 +17,12 @@ import StudentModal from "./misc/StudentModal";
 
 const Scanner = () => {
   const { register, handleSubmit, setFocus, resetField } = useForm();
-
+  const [subject, setSubject] = useState("");
   const [rfid, setRfid] = useState("");
   const [time, setTime] = useState("");
   const [timePresent, setTimePresent] = useState("");
+  const [roomNum, setRoomNum] = useState("");
+  const [professor, setProfessor] = useState("");
   // const navigate = useNavigate();
   const toast = useToast();
   const [loading, setLoading] = useState(false);
@@ -32,6 +34,9 @@ const Scanner = () => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
     setTime(user.time);
     setTimePresent(user.timePresent);
+    setRoomNum(user.lab);
+    setSubject(user.subject);
+    setProfessor(user.fullName);
   }, []);
   const submitHandler = async () => {
     setLoading(true);
@@ -66,6 +71,9 @@ const Scanner = () => {
           rfid,
           time,
           timePresent,
+          roomNum,
+          subject,
+          professor,
         },
         config
       );
@@ -96,6 +104,7 @@ const Scanner = () => {
       <form onSubmit={handleSubmit(submitHandler)}>
         <label htmlFor="code">ID: </label>
         <input
+          type={"password"}
           placeholder="code..."
           {...register("code", {
             onChange: (e) => setRfid(e.target.value),

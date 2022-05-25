@@ -1,21 +1,7 @@
 import {
   Button,
-  Center,
-  FormControl,
   FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightElement,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Spacer,
-  Stack,
   useToast,
-  VStack,
-  Tooltip,
   useDisclosure,
   Modal,
   ModalOverlay,
@@ -27,9 +13,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const ProfessorModalScan = () => {
   const { register, handleSubmit, setFocus, resetField } = useForm();
@@ -79,6 +65,7 @@ const ProfessorModalScan = () => {
         isClosable: true,
         position: "bottom",
       });
+      resetField("code");
       setLoading(false);
     }
   };
@@ -100,20 +87,23 @@ const ProfessorModalScan = () => {
           <ModalHeader>Please SCAN your ID to Login</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <FormControl p={4}>
-              <FormLabel>Professor ID:</FormLabel>
-              <Input
-                ref={initialRef}
-                type={"password"}
-                placeholder="Tap your ID"
-                onChange={(e) => setRfid(e.target.value)}
-              />
-            </FormControl>
+            <FormLabel>Professor ID:</FormLabel>
+            <div>
+              <form onSubmit={handleSubmit(submitHandler)}>
+                <label htmlFor="code">ID: </label>
+                <input
+                  autoFocus={true}
+                  type={"password"}
+                  placeholder="code..."
+                  {...register("code", {
+                    onChange: (e) => setRfid(e.target.value),
+                  })}
+                />
+                <input type="submit" />
+              </form>
+            </div>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={submitHandler} size={"lg"} colorScheme={"blue"}>
-              Submit
-            </Button>
             <Button onClick={onClose} size={"lg"} colorScheme={"red"}>
               Close
             </Button>

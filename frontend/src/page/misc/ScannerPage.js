@@ -10,6 +10,7 @@ import {
 import React, { useEffect, useState } from "react";
 import SideDrawer from "../../drawer/SideDrawer";
 import Scanner from "../Scanner";
+import Download from "./Download";
 import StudentModal from "./StudentModal";
 
 const ScannerPage = () => {
@@ -86,7 +87,7 @@ const ScannerPage = () => {
       </Center>
       <Spacer />
       //3rd part
-      <Center></Center>
+      <Center>{/* <Download /> */}</Center>
       <Center p={5} h="50px" bg="green.500">
         <StudentModal />
         <Spacer />

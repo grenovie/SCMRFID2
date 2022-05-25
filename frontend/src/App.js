@@ -9,9 +9,10 @@ import ProtectedAdmin from "./protect/ProtectAdmin";
 import ProtectedStaff from "./protect/ProtectStaff";
 import NotHere from "./redirectlink/NotHere";
 import ScannerPage from "./page/misc/ScannerPage";
-import ProfStudentList from "./page/misc/ProfStudentList";
 import RegisterStudent from "./page/misc/RegisterStudent";
-import AdminStudentList from "./page/misc/AdminStudentList";
+import RegisterProf from "./page/misc/RegisterProf";
+import StudentList from "./page/table/StudentList";
+
 function App() {
   return (
     <div className="App">
@@ -21,12 +22,12 @@ function App() {
         <Route element={<ProtectedAdmin />}>
           <Route path="admin" element={<Admin />} />
           <Route path="register_stud" element={<RegisterStudent />} />
-          <Route path="admin_studlist" element={<AdminStudentList />} />
+          <Route path="register_professor" element={<RegisterProf />} />
         </Route>
         <Route element={<ProtectedStaff />}>
           <Route path="scanner" element={<ScannerPage />} />
         </Route>
-        <Route path="stud_list" element={<ProfStudentList />} />
+        <Route path="stud_list" element={<StudentList />} />
       </Routes>
     </div>
   );

@@ -9,7 +9,8 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import AdminSideDrawer from "../drawer/AdminSideDrawer";
-import Script from "./Script";
+import AdminList from "../page/table/AdminList";
+
 const Admin = () => {
   return (
     <VStack spacing={10} align="stretch" w="100%">
@@ -30,7 +31,7 @@ const Admin = () => {
         </Box>
       </Center>
       <Center>
-        <Script />
+        <AdminList />
       </Center>
     </VStack>
   );

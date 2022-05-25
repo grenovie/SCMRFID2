@@ -6,3 +6,9 @@
   background-size: auto;
   background-position: center;
 }
+
+@import "antd/dist/antd.css";
+
+.Application {
+  text-align: center;
+}

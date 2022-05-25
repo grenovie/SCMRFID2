@@ -14,5 +14,4 @@ router.route("/").post(registerAccount);
 router.post("/login", authUser);
 router.post("/login_credential", authUser2);
 router.post("/admin", authAdmin);
-router.post("/student", authStudent);
 module.exports = router;

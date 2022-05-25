@@ -17,7 +17,7 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -27,6 +27,20 @@ const StudentModal = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [isStaff, setIsStaff] = useState(false);
+  const [timePresent, setTimePresent] = useState("");
+  const [roomNum, setRoomNum] = useState("");
+  const [professor, setProfessor] = useState("");
+  const [subject, setSubject] = useState("");
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+    setTime(user.time);
+    setTimePresent(user.timePresent);
+    setRoomNum(user.lab);
+    setSubject(user.subject);
+    setProfessor(user.fullName);
+  }, []);
 
   const click = () => setShow(!show);
   const navigate = useNavigate();
@@ -55,7 +69,7 @@ const StudentModal = () => {
       };
       const { data } = await axios.put(
         "/api/tags/add_backup",
-        { studentId, password },
+        { studentId, password, time, timePresent, roomNum, subject, professor },
         config
       );
       toast({

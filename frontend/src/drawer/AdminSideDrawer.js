@@ -24,14 +24,6 @@ const AdminSideDrawer = () => {
     navigate("/");
   };
   const btnRef = React.useRef();
-  function handleClick() {
-    const url = "https://account.mongodb.com/account/login";
-    window.open(url, "_blank");
-  }
-  function handleClickDashB() {
-    const url = "https://charts.mongodb.com/charts-scm-rfid-dzrqs/dashboards";
-    window.open(url, "_blank");
-  }
 
   return (
     <>
@@ -77,29 +69,9 @@ const AdminSideDrawer = () => {
                 h="40px"
                 w="100%"
                 bgColor="green.200"
-                onClick={() => navigate("/admin_studlist")}
+                onClick={() => navigate("/register_professor")}
               >
-                <Text fontSize={20}>Student List</Text>
-              </Box>
-              <Box
-                borderRadius={5}
-                as="button"
-                h="40px"
-                w="100%"
-                bgColor="green.200"
-                onClick={handleClick}
-              >
-                <Text fontSize={20}>MongoDB Atlas</Text>
-              </Box>
-              <Box
-                borderRadius={5}
-                as="button"
-                h="40px"
-                w="100%"
-                bgColor="green.200"
-                onClick={handleClickDashB}
-              >
-                <Text fontSize={20}>MongoDB Dashboard</Text>
+                <Text fontSize={20}>Register Professor</Text>
               </Box>
             </Stack>
           </DrawerBody>

@@ -7,12 +7,15 @@ const professorSchema = mongoose.Schema(
     password: { type: String, require: true },
     professorId: { type: String, require: true, unique: true },
     fullName: { type: String, require: true },
-    section: { type: String, require: true },
-    isStaff: { type: Boolean, default: false },
+    section: { type: String },
+    isStaff: { type: Boolean, default: true },
     lab: { type: String, require: true },
     rfid: { type: String },
     time: { type: String },
     timePresent: { type: String },
+    timeStart: { type: String },
+    timeEnd: { type: String },
+    subject: { type: String },
   },
   { timestamps: true }
 );

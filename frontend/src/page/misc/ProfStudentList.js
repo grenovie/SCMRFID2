@@ -1,41 +1,57 @@
 import { ChevronDownIcon, Search2Icon } from "@chakra-ui/icons";
-import { Box, Button, Center, FormLabel, Image, Input, InputGroup, InputLeftElement, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Spacer, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  FormLabel,
+  Image,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Spacer,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import SideDrawer from "../../drawer/SideDrawer";
 import ProfDashboard from "./ProfDashboard";
 
 const ProfStudentList = () => {
-
   useEffect(() => {
-
     const user = JSON.parse(localStorage.getItem("userInfo"));
 
     if (user) {
-      setOption(user.section)
+      setOption(user.section);
     }
   }, []);
 
   const [option, setOption] = useState("");
 
-  return <VStack spacing={10} align="stretch" w="100%">
-  <Center h="100px" bg="green.200">
-    <Image
-      marginLeft={50}
-      boxSize="75px"
-      src="https://upload.wikimedia.org/wikipedia/en/d/dc/Universidad_de_Manila_Logo.png"
-    />
+  return (
+    <VStack spacing={10} align="stretch" w="100%">
+      <Center h="100px" bg="green.200">
+        <Image
+          marginLeft={50}
+          boxSize="75px"
+          src="https://upload.wikimedia.org/wikipedia/en/d/dc/Universidad_de_Manila_Logo.png"
+        />
 
-    <Spacer />
-    <Text color="#557B83" fontWeight="bold" fontSize="5xl">
-      STUDENT LIST of {option}
-    </Text>
-    <Spacer />
-    <Box p={3}>
-      <SideDrawer />
-    </Box>
-  </Center>
-  //2nd
-  {/* <Center
+        <Spacer />
+        <Text color="#557B83" fontWeight="bold" fontSize="5xl">
+          STUDENT LIST of {option}
+        </Text>
+        <Spacer />
+        <Box p={3}>
+          <SideDrawer />
+        </Box>
+      </Center>
+      //2nd
+      {/* <Center
     p={5}
     flexDirection="row"
     borderRadius={10}
@@ -64,11 +80,12 @@ const ProfStudentList = () => {
   </InputRightElement>
     </InputGroup>
   </Center> */}
-  //3rd
-  <Center>
-    <ProfDashboard opt={option} />
-  </Center>
-</VStack>
+      //3rd
+      <Center>
+        <ProfDashboard opt={option} />
+      </Center>
+    </VStack>
+  );
 };
 
 export default ProfStudentList;

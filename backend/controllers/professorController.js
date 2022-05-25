@@ -3,17 +3,32 @@ const generateToken = require("../config/generateToken");
 const Professor = require("../models/professorModel");
 
 const registerProfessor = asyncHandler(async (req, res) => {
-  const { username, password, professorId, fullName, section, isStaff, lab } =
-    req.body;
+  const {
+    rfid,
+    username,
+    password,
+    professorId,
+    fullName,
+    isStaff,
+    lab,
+    sched,
+    timeStart,
+    timeEnd,
+    section,
+    subject,
+  } = req.body;
 
   if (
     !username ||
     !password ||
     !professorId ||
     !fullName ||
-    !section ||
-    !isStaff ||
-    !lab
+    !lab ||
+    !rfid ||
+    !sched ||
+    !timeStart ||
+    !timeEnd ||
+    !subject
   ) {
     res.status(404);
     throw new Error("Please fill all the fields!");
@@ -27,13 +42,18 @@ const registerProfessor = asyncHandler(async (req, res) => {
   }
 
   const professor = await Professor.create({
+    rfid,
     username,
     password,
     professorId,
     fullName,
-    section,
     isStaff,
     lab,
+    timeStart,
+    timeEnd,
+    sched,
+    section,
+    subject,
   });
 
   if (professor) {

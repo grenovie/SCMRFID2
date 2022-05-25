@@ -1,6 +1,4 @@
 const asyncHandler = require("express-async-handler");
-const res = require("express/lib/response");
-const { compileETag } = require("express/lib/utils");
 const generateToken = require("../config/generateToken");
 const Account = require("../models/accountModel");
 const Professor = require("../models/professorModel");
@@ -64,6 +62,11 @@ const authUser2 = asyncHandler(async (req, res) => {
       fullName: professor.fullName,
       section: professor.section,
       isStaff: professor.isStaff,
+      time: professor.time,
+      timePresent: professor.timeStart,
+      professorId: professor.professorId,
+      lab: professor.lab,
+      subject: professor.subject,
       token: generateToken(professor._id),
     });
   } else {
@@ -83,7 +86,10 @@ const authUser = asyncHandler(async (req, res) => {
       section: professor.section,
       isStaff: professor.isStaff,
       time: professor.time,
-      timePresent: professor.timePresent,
+      timePresent: professor.timeStart,
+      professorId: professor.professorId,
+      lab: professor.lab,
+      subject: professor.subject,
       token: generateToken(professor._id),
     });
   } else {
